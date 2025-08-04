@@ -1,3 +1,8 @@
+// Izarra Villareal CS 81 JavaScript Final Project: Tarot Card Draw
+// GitHub URL: https://github.com/izzyduzzzit/tarot-card-draw
+
+// Complete Major Arcana deck with meanings and keywords
+// Each card has an id (0-21), name, meaning, and keywords for interpretation
 export const majorArcana = [
   { id: 0, name: "The Fool", meaning: "New beginnings, innocence, spontaneity", keywords: "Adventure, Freedom, Originality" },
   { id: 1, name: "The Magician", meaning: "Manifestation, resourcefulness, power", keywords: "Willpower, Desire, Creation" },
@@ -23,11 +28,18 @@ export const majorArcana = [
   { id: 21, name: "The World", meaning: "Completion, accomplishment, travel", keywords: "Completion, Accomplishment, Success" }
 ];
 
+// Function to randomly shuffle an array of cards
+// Uses Math.random() to create random ordering
 export const shuffleArray = (array) => {
   return array.sort(() => Math.random() - 0.5);
 };
 
+// Higher-order function that returns a card selection function
+// Takes desired number of cards and returns a function that selects that many cards
 export const getRandomCards = (count) => (cards) => {
+  // Create copy of cards array to avoid modifying original
   const shuffled = shuffleArray([...cards]);
+  
+  // Return requested number of cards from shuffled deck
   return shuffled.slice(0, count);
 };
